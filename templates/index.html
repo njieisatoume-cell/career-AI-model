@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Recommendation System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="hero-section">
+            <h1>AI Career Recommendation System</h1>
+
+            <p>
+                Tell the model a bit about yourself by filling the fields below.
+                The system will analyze your strengths, skills, and academic abilities
+                to recommend the most suitable career path for you.
+            </p>
+        </div>
+
+        <!-- FORM CARD -->
+        <div class="form-card">
+
+            <form action="/predict" method="POST">
+
+                <!-- Academic Section -->
+                <div class="section-title">
+                    <h2>Academic Performance</h2>
+                    <span>Provide information about your academic abilities.</span>
+                </div>
+
+                <div class="input-grid">
+
+                    <div class="input-group">
+                        <label>Math Performance</label>
+                        <select name="math" required>
+                            <option value="">Select Level</option>
+                            <option value="1">Very Poor</option>
+                            <option value="2">Poor</option>
+                            <option value="3">Average</option>
+                            <option value="4">Good</option>
+                            <option value="5">Excellent</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Study Hours</label>
+                        <select name="study_hours" required>
+                            <option value="">Select Range</option>
+                            <option value="1">1 - 2 Hours</option>
+                            <option value="2">3 - 5 Hours</option>
+                            <option value="3">6 - 8 Hours</option>
+                            <option value="4">9 - 12 Hours</option>
+                            <option value="5">More than 12 Hours</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Technical Section -->
+                <div class="section-title">
+                    <h2>Technical Skills</h2>
+                    <span>Rate your technical and analytical capabilities.</span>
+                </div>
+
+                <div class="input-grid">
+
+                    <div class="input-group">
+                        <label>Programming Skill</label>
+                        <select name="programming" required>
+                            <option value="">Select Level</option>
+                            <option value="1">Very Poor</option>
+                            <option value="2">Poor</option>
+                            <option value="3">Average</option>
+                            <option value="4">Good</option>
+                            <option value="5">Excellent</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Technical Skill</label>
+                        <select name="technical" required>
+                            <option value="">Select Level</option>
+                            <option value="1">Very Poor</option>
+                            <option value="2">Poor</option>
+                            <option value="3">Average</option>
+                            <option value="4">Good</option>
+                            <option value="5">Excellent</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Analytical Skill</label>
+                        <select name="analytical" required>
+                            <option value="">Select Level</option>
+                            <option value="1">Very Poor</option>
+                            <option value="2">Poor</option>
+                            <option value="3">Average</option>
+                            <option value="4">Good</option>
+                            <option value="5">Excellent</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Soft Skills Section -->
+                <div class="section-title">
+                    <h2>Soft Skills</h2>
+                    <span>Evaluate your communication and interpersonal skills.</span>
+                </div>
+
+                <div class="input-grid">
+
+                    <div class="input-group">
+                        <label>Communication Skill</label>
+                        <select name="communication" required>
+                            <option value="">Select Level</option>
+                            <option value="1">Very Poor</option>
+                            <option value="2">Poor</option>
+                            <option value="3">Average</option>
+                            <option value="4">Good</option>
+                            <option value="5">Excellent</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="predict-btn">
+                    Predict Career
+                </button>
+
+            </form>
+
+            {% if prediction_text %}
+                <div class="result-card">
+                    <h2>{{ prediction_text }}</h2>
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
